@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h2>Inscrivez vous Svp :</h2>
+  <h3>(doit être un SuperUser, check with the site admin)</h3>
+
+  {% if form.errors %}
+    <p>username and password didn't match ! Essayez encore.</p>
+  {% endif %}
+
+<!-- pas besoin de 'blog:login' -->
+  <form action="{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <!-- TemplateSyntaxError at /accounts/login/ {pourcentform.as_p %} erreur -->
+
+      {{form.as_p}}
+      <input type="submit" class="btn btn-primary" name="" value="Login">
+      <input type="hidden" name="next" value="{{next}}">
+
+  </form>
+
+</div>
+
+
+{% endblock %}
