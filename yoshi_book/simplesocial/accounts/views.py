@@ -7,10 +7,9 @@ from . import forms
 from django.views.generic import CreateView
 
 
-
 # Create your views here.
 class SignUp(CreateView):
-    form_class = UtilisateurCreationForm
+    form_class = forms.UtilisateurCreationForm
     #reverse_lazy pour aller sur la page que si le user a appuyé sur le bouton submit
-    return reverse_lazy('login')
+    success_url = reverse_lazy('login')
     template_name = ('accounts/signup.html')
